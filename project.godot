@@ -43,6 +43,7 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation="landscape"
 window/stretch/scale.android=1.5
+window/stretch/scale.ios=1.5
 
 [input]
 
