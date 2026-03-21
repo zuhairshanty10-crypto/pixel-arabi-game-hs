@@ -24,6 +24,9 @@ jobs:
       - name: Create export directory
         run: mkdir -p ios_build
         
+      - name: Force Asset Import
+        run: godot --headless --editor --quit-after 60 || true
+        
       - name: Export Godot iOS Project
         run: |
           # Headless export to Xcode project
