@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/island2/background/l1-background.png" id="1"]
+[ext_resource type="Texture2D" path="res://assets/island2/background/l2-northern-lights01.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/island2/background/l3-fog.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/island2/background/l4-stars.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/island2/background/l5-northern-lights02.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/island2/background/l6-moon.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/island2/background/l7-mountains01.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/island2/background/l8-mountains02.png" id="8"]
+[ext_resource type="Script" path="res://scripts/levels/Island2BG.gd" id="10"]
+
+[node name="Island2Background" type="ParallaxBackground"]
+script = ExtResource("10")
+
+[node name="L1_Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.0, 0.0)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite" type="Sprite2D" parent="L1_Sky"]
+position = Vector2(960, 540)
+texture = ExtResource("1")
+
+[node name="L2_NorthernLights1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.02, 0.02)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite" type="Sprite2D" parent="L2_NorthernLights1"]
+position = Vector2(960, 540)
+texture = ExtResource("2")
+
+[node name="L3_Fog" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite" type="Sprite2D" parent="L3_Fog"]
+position = Vector2(960, 540)
+texture = ExtResource("3")
+
+[node name="L4_Stars" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.03, 0.03)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite" type="Sprite2D" parent="L4_Stars"]
+position = Vector2(960, 540)
+texture = ExtResource("4")
+
+[node name="L5_NorthernLights2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.04, 0.04)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite" type="Sprite2D" parent="L5_NorthernLights2"]
+position = Vector2(960, 540)
+texture = ExtResource("5")
+
+[node name="L6_Moon" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.08, 0.05)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite" type="Sprite2D" parent="L6_Moon"]
+position = Vector2(960, 540)
+texture = ExtResource("6")
+
+[node name="L7_Mountains1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.15, 0.1)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite" type="Sprite2D" parent="L7_Mountains1"]
+position = Vector2(960, 540)
+texture = ExtResource("7")
+
+[node name="L8_Mountains2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.15)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite" type="Sprite2D" parent="L8_Mountains2"]
+position = Vector2(960, 540)
+texture = ExtResource("8")

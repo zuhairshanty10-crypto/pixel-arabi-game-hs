@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=4 uid="uid://cav5fd7v0uyvb"]
+
+[ext_resource type="Script" uid="uid://c55naifitb5ub" path="res://scripts/levels/LevelManager.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/levels/Island2Background.tscn" id="3"]
+[ext_resource type="TileSet" uid="uid://bdyik8ky43qbn" path="res://resources/tilesets/island2_tileset.tres" id="4"]
+[ext_resource type="TileSet" uid="uid://dg3m6cdpoq0eg" path="res://resources/tilesets/island2_decorations_tileset.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://4f6vapie1dfi" path="res://scenes/player/Player.tscn" id="5_esw77"]
+[ext_resource type="PackedScene" path="res://scenes/traps/PunchTrap.tscn" id="6_083o5"]
+[ext_resource type="PackedScene" uid="uid://dlij4e1upgvek" path="res://scenes/traps/LightningTrap.tscn" id="7_3pajl"]
+[ext_resource type="PackedScene" uid="uid://rocket001" path="res://scenes/traps/Rocket.tscn" id="8_fmgpo"]
+[ext_resource type="PackedScene" path="res://scenes/traps/SawTrap.tscn" id="9_sh3sd"]
+[ext_resource type="PackedScene" uid="uid://srcqt0v1am0m" path="res://scenes/traps/FireTrap.tscn" id="10_sq6sx"]
+[ext_resource type="PackedScene" uid="uid://678wikaed5gg" path="res://scenes/interactables/ExitDoor.tscn" id="11_7jj0l"]
+
+[node name="Level_2_5" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Island2Background" parent="." instance=ExtResource("3")]
+
+[node name="Decorations" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAAkABQAAAABAAoAAAAkABMAAAABAAkAAAAjABMAAAAAAAkAAAA=")
+tile_set = ExtResource("5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAkABQAAAABAAMAAAAlABQAAAACAAMAAAAmABQAAAACAAMAAAAnABQAAAACAAMAAAAoABQAAAACAAMAAAApABQAAAACAAMAAAAqABQAAAACAAMAAAAOABQAAAAAAAMAAAArABQAAAACAAMAAAAsABQAAAACAAMAAAAtABQAAAACAAMAAAAuABQAAAACAAMAAAAvABQAAAACAAMAAAAwABQAAAACAAMAAAAxABQAAAACAAMAAAAyABQAAAACAAMAAAAzABQAAAACAAMAAAA0ABQAAAACAAMAAAA1ABQAAAACAAMAAAA2ABQAAAACAAMAAAA3ABQAAAACAAMAAAA4ABQAAAACAAMAAAA5ABQAAAACAAMAAAA6ABQAAAACAAMAAAA7ABQAAAACAAMAAAA8ABQAAAACAAMAAAA9ABQAAAACAAMAAAA+ABQAAAACAAMAAAA/ABQAAAACAAMAAABAABQAAAACAAMAAABBABQAAAACAAMAAABCABQAAAACAAMAAABDABQAAAACAAMAAABEABQAAAACAAMAAAA=")
+tile_set = ExtResource("4")
+
+[node name="Traps" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("5_esw77")]
+position = Vector2(1263, 608)
+
+[node name="PunchTrap" parent="." instance=ExtResource("6_083o5")]
+position = Vector2(1171, 640)
+
+[node name="LightningTrap" parent="." instance=ExtResource("7_3pajl")]
+position = Vector2(1351, 593)
+
+[node name="LightningTrap2" parent="." instance=ExtResource("7_3pajl")]
+position = Vector2(1394, 593)
+
+[node name="Rocket" parent="." instance=ExtResource("8_fmgpo")]
+position = Vector2(1457, 628)
+
+[node name="Rocket2" parent="." instance=ExtResource("8_fmgpo")]
+position = Vector2(1534, 626)
+
+[node name="Rocket3" parent="." instance=ExtResource("8_fmgpo")]
+position = Vector2(1593, 623)
+
+[node name="SawTrap" parent="." instance=ExtResource("9_sh3sd")]
+position = Vector2(1657, 609)
+rotation = 3.17301
+
+[node name="FireTrap" parent="." instance=ExtResource("10_sq6sx")]
+position = Vector2(1713, 608)
+
+[node name="FireTrap2" parent="." instance=ExtResource("10_sq6sx")]
+position = Vector2(1749, 608)
+
+[node name="FireTrap3" parent="." instance=ExtResource("10_sq6sx")]
+position = Vector2(1778, 608)
+
+[node name="FireTrap4" parent="." instance=ExtResource("10_sq6sx")]
+position = Vector2(1806, 609)
+
+[node name="FireTrap5" parent="." instance=ExtResource("10_sq6sx")]
+position = Vector2(1834, 608)
+
+[node name="PunchTrap2" parent="." instance=ExtResource("6_083o5")]
+position = Vector2(1866, 635)
+
+[node name="PunchTrap3" parent="." instance=ExtResource("6_083o5")]
+position = Vector2(1910, 638)
+
+[node name="ExitDoor" parent="." instance=ExtResource("11_7jj0l")]
+position = Vector2(1667, 595)
+collision_mask = 0
+
+[node name="ExitDoor2" parent="." instance=ExtResource("11_7jj0l")]
+position = Vector2(1733, 593)
+collision_mask = 0
+
+[node name="ExitDoor3" parent="." instance=ExtResource("11_7jj0l")]
+position = Vector2(1792, 594)
+collision_mask = 0
+
+[node name="ExitDoor4" parent="." instance=ExtResource("11_7jj0l")]
+position = Vector2(1849, 595)
+collision_mask = 0
+
+[node name="ExitDoor5" parent="." instance=ExtResource("11_7jj0l")]
+position = Vector2(2192, 592)
+collision_mask = 0
+
+[node name="ExitDoor6" parent="." instance=ExtResource("11_7jj0l")]
+position = Vector2(478, 592)
+next_level_path = "res://scenes/levels/Level_3_1.tscn"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://h3rmy41fm8ca"]
+
+[ext_resource type="Script" path="res://scripts/traps/ArrowShooter.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/traps/Shooter_Arrow_Trap.png" id="2"]
+
+[node name="ArrowShooter" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+hframes = 4
+vframes = 2
+frame = 0
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0

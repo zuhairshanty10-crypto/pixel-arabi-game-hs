@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://5vttm4u5aa2h"]
+
+[ext_resource type="Script" path="res://scripts/traps/Pendulum.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://btev1xerwu70j" path="res://assets/traps/axe/axe1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://pjfx72tk56bn" path="res://assets/traps/axe/axe2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://d4jbvfw6fxlwt" path="res://assets/traps/axe/axe3.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://ho8hjvfo63i3" path="res://assets/traps/axe/axe4.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c73q8wnrixgwk" path="res://assets/traps/axe/axe5.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://djwve52chfc3j" path="res://assets/traps/axe/axe6.png" id="7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axe"]
+size = Vector2(96.5, 41)
+
+[sub_resource type="Animation" id="Animation_swing"]
+resource_name = "swing"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xx"]
+_data = {
+&"swing": SubResource("Animation_swing")
+}
+
+[node name="Pendulum" type="Area2D" groups=["trap"]]
+collision_mask = 2
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 48)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 75.5)
+shape = SubResource("RectangleShape2D_axe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xx")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

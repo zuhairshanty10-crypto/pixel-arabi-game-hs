@@ -1,0 +1,170 @@
+[gd_scene load_steps=18 format=4 uid="uid://dvg1w2v5s5vf4"]
+
+[ext_resource type="Script" uid="uid://c55naifitb5ub" path="res://scripts/levels/LevelManager.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://4f6vapie1dfi" path="res://scenes/player/Player.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://c4baa7lwgnuaj" path="res://assets/island1/Background/1920x1080/Full_bg_1920x1080.png" id="3"]
+[ext_resource type="TileSet" uid="uid://cr05w1kfc5epy" path="res://resources/tilesets/island1_tileset.tres" id="4"]
+[ext_resource type="TileSet" uid="uid://b0jdusu7ftb2i" path="res://resources/tilesets/island3_decorations_tileset.tres" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/traps/HiddenSpike.tscn" id="7_jnp3q"]
+[ext_resource type="PackedScene" uid="uid://dewdye17clefo" path="res://scenes/traps/MovingPlatform.tscn" id="8_k2p1l"]
+[ext_resource type="PackedScene" uid="uid://c1g3uv6gdf0mm" path="res://scenes/levels/LeftBoundary.tscn" id="9_0l3oi"]
+[ext_resource type="PackedScene" uid="uid://dgohk2k33xwsm" path="res://scenes/traps/FallingPlatform.tscn" id="9_7dsvl"]
+[ext_resource type="PackedScene" uid="uid://jm7oyclhoioe" path="res://scenes/traps/FallingRock.tscn" id="10_bwlfq"]
+[ext_resource type="PackedScene" path="res://scenes/levels/TopBoundary.tscn" id="11_7dbxd"]
+[ext_resource type="PackedScene" path="res://scenes/levels/BottomBoundary.tscn" id="12_gt81o"]
+[ext_resource type="PackedScene" uid="uid://fire001" path="res://scenes/traps/Fire.tscn" id="13_7dbxd"]
+[ext_resource type="PackedScene" uid="uid://bomb001" path="res://scenes/traps/Bomb.tscn" id="14_gt81o"]
+[ext_resource type="PackedScene" uid="uid://rocket001" path="res://scenes/traps/Rocket.tscn" id="15_6lrrs"]
+[ext_resource type="PackedScene" uid="uid://c83k48gah3k2" path="res://scenes/traps/FakeDoor.tscn" id="16_gt81o"]
+[ext_resource type="PackedScene" path="res://scenes/levels/RightBoundary.tscn" id="17_6lrrs"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(586, 309)
+scale = Vector2(4, 4)
+texture = ExtResource("3")
+
+[node name="Decorations" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AACn/1QAAAAVAAUAAACn/1MAAAAVAAQAAACt/1QAAAAWAAkAAACs/1QAAAAVAAkAAACt/1MAAAAWAAgAAACs/1MAAAAVAAgAAAA=")
+tile_set = ExtResource("5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AACn/1QAAAAAAAsAAACo/1QAAAAAAAsAAACp/1QAAAAAAAsAAACq/1QAAAAAAAsAAACr/1QAAAAAAAsAAACs/1QAAAAAAAsAAACt/1QAAAAAAAsAAACu/1QAAAAAAAsAAACv/1QAAAAHAAYAAACw/1QAAAAIAAYAAACx/1QAAAAHAAYAAACy/1QAAAAIAAYAAAC//1QAAAAHAAYAAADA/1QAAAAIAAYAAADC/1QAAAAAAAEAAADD/1QAAAAAAAsAAADD/1UAAAANAAUAAADD/1YAAAANAAUAAADD/1cAAAANAAUAAADD/1kAAAANAAUAAADD/1gAAAANAAUAAADD/1oAAAANAAUAAADD/1sAAAANAAUAAADD/1wAAAANAAUAAADD/14AAAANAAUAAADD/10AAAANAAUAAADG/14AAAANAAUAAADG/10AAAANAAUAAADG/1wAAAANAAUAAADG/1sAAAANAAUAAADG/1oAAAANAAUAAADG/1kAAAANAAUAAADG/1gAAAANAAUAAADG/1cAAAANAAUAAADG/1YAAAANAAUAAADG/1UAAAANAAUAAADG/1QAAAAAAAsAAADH/1QAAAAEAAEAAADE/14AAAANAAUAAADF/14AAAANAAUAAADL/1QAAAAAAAsAAADM/1QAAAAAAAsAAADN/1QAAAAAAAsAAADO/1QAAAAAAAsAAADP/1QAAAAAAAsAAADQ/1QAAAAAAAsAAADR/1QAAAAAAAsAAADS/1QAAAAAAAsAAADT/1QAAAAAAAsAAADU/1QAAAAAAAsAAADV/1QAAAAAAAsAAADW/1QAAAAAAAsAAADX/1QAAAAAAAsAAADY/1QAAAAAAAsAAADc/1QAAAADAAsAAADc/1MAAAADAAoAAADd/1MAAAAEAAoAAADd/1QAAAAEAAsAAADe/1QAAAAFAAsAAADi/1MAAAAHAAYAAADj/1MAAAAIAAYAAADl/1IAAAAHAAYAAADm/1IAAAAIAAYAAADo/1EAAAAHAAYAAADp/1EAAAAIAAYAAADr/1AAAAAHAAYAAADs/1AAAAAIAAYAAAD4/0kAAAAHAAYAAAD5/0kAAAAIAAYAAAABAFEAAAAAAAsAAAACAFEAAAAAAAsAAAADAFEAAAAAAAsAAAAEAFEAAAAAAAsAAAAFAFEAAAAAAAsAAAAGAFAAAAAAAAsAAAAHAE8AAAAAAAsAAAAIAE4AAAAAAAsAAAAJAE8AAAAAAAsAAAAKAFAAAAAAAAsAAAALAFEAAAAAAAsAAAAMAFEAAAAAAAsAAAAOAFEAAAAAAAsAAAANAFEAAAAAAAsAAAARAFEAAAAAAAsAAAAUAFEAAAAAAAsAAAAXAFEAAAAAAAsAAAAaAFEAAAAAAAsAAAAfAFEAAAAAAAsAAAAgAFEAAAAAAAsAAAAhAFEAAAAAAAsAAAAiAFEAAAAAAAsAAAAjAFEAAAAAAAsAAAAkAFEAAAAAAAsAAAAlAFEAAAAAAAsAAAAmAFEAAAAAAAsAAAAnAFEAAAAAAAsAAAAoAFEAAAAAAAsAAAApAFEAAAAAAAsAAAAqAFEAAAAAAAsAAAArAFEAAAAAAAsAAAD//1EAAAAAAAsAAAD+/1AAAAAAAAsAAAD9/08AAAAAAAsAAAD8/04AAAAAAAsAAAD7/00AAAAAAAsAAAD6/0wAAAAAAAsAAAD6/0sAAAAAAAsAAAA=")
+tile_set = ExtResource("4")
+
+[node name="Player" parent="." instance=ExtResource("2")]
+position = Vector2(-2752, 2640)
+
+[node name="Traps" type="Node2D" parent="."]
+
+[node name="LeftBoundary" parent="." instance=ExtResource("9_0l3oi")]
+position = Vector2(-2850, 2405)
+
+[node name="HiddenSpike" parent="." instance=ExtResource("7_jnp3q")]
+position = Vector2(-2657, 2684)
+
+[node name="HiddenSpike2" parent="." instance=ExtResource("7_jnp3q")]
+position = Vector2(-2492, 2681)
+
+[node name="MovingPlatform" parent="." instance=ExtResource("8_k2p1l")]
+position = Vector2(-2415, 2704)
+
+[node name="FallingPlatform" parent="." instance=ExtResource("9_7dsvl")]
+position = Vector2(-2329, 2706)
+
+[node name="FallingRock" parent="." instance=ExtResource("10_bwlfq")]
+position = Vector2(-2511, 2270)
+
+[node name="TopBoundary" parent="." instance=ExtResource("11_7dbxd")]
+position = Vector2(-2535, 2270)
+
+[node name="BottomBoundary" parent="." instance=ExtResource("12_gt81o")]
+position = Vector2(-2207, 3044)
+
+[node name="FallingPlatform2" parent="." instance=ExtResource("9_7dsvl")]
+position = Vector2(-2229, 2707)
+
+[node name="FallingPlatform3" parent="." instance=ExtResource("9_7dsvl")]
+position = Vector2(-2126, 2702)
+
+[node name="HiddenSpike4" parent="." instance=ExtResource("7_jnp3q")]
+position = Vector2(-2046, 2682)
+
+[node name="Fire" parent="." instance=ExtResource("13_7dbxd")]
+position = Vector2(-1649, 2714)
+
+[node name="Fire3" parent="." instance=ExtResource("13_7dbxd")]
+position = Vector2(-1520, 2715)
+
+[node name="Fire5" parent="." instance=ExtResource("13_7dbxd")]
+position = Vector2(-1387, 2713)
+
+[node name="Fire7" parent="." instance=ExtResource("13_7dbxd")]
+position = Vector2(-1268, 2715)
+
+[node name="HiddenSpike3" parent="." instance=ExtResource("7_jnp3q")]
+position = Vector2(-1070, 2688)
+
+[node name="FallingPlatform4" parent="." instance=ExtResource("9_7dsvl")]
+position = Vector2(-544, 2533)
+
+[node name="FallingPlatform5" parent="." instance=ExtResource("9_7dsvl")]
+position = Vector2(-438, 2465)
+
+[node name="FallingPlatform6" parent="." instance=ExtResource("9_7dsvl")]
+position = Vector2(-328, 2411)
+
+[node name="Bomb" parent="." instance=ExtResource("14_gt81o")]
+position = Vector2(-829, 2621)
+
+[node name="Bomb2" parent="." instance=ExtResource("14_gt81o")]
+position = Vector2(-638, 2560)
+
+[node name="Bomb3" parent="." instance=ExtResource("14_gt81o")]
+position = Vector2(561, 2591)
+
+[node name="Bomb4" parent="." instance=ExtResource("14_gt81o")]
+position = Vector2(657, 2590)
+
+[node name="Fire8" parent="." instance=ExtResource("13_7dbxd")]
+position = Vector2(753, 2619)
+
+[node name="Fire9" parent="." instance=ExtResource("13_7dbxd")]
+position = Vector2(848, 2619)
+
+[node name="Rocket" parent="." instance=ExtResource("15_6lrrs")]
+position = Vector2(-2128, 2684)
+
+[node name="Fire10" parent="." instance=ExtResource("13_7dbxd")]
+position = Vector2(-1947, 2715)
+
+[node name="Fire11" parent="." instance=ExtResource("13_7dbxd")]
+position = Vector2(-1826, 2717)
+
+[node name="HiddenSpike5" parent="." instance=ExtResource("7_jnp3q")]
+position = Vector2(337, 2560)
+
+[node name="HiddenSpike6" parent="." instance=ExtResource("7_jnp3q")]
+position = Vector2(208, 2555)
+
+[node name="Fire13" parent="." instance=ExtResource("13_7dbxd")]
+position = Vector2(466, 2621)
+
+[node name="point1" type="Marker2D" parent="."]
+modulate = Color(0.479201, 0.000481019, 0.557596, 1)
+position = Vector2(1027, 2593)
+gizmo_extents = 100.1
+
+[node name="point2" type="Marker2D" parent="."]
+position = Vector2(117, 2594)
+gizmo_extents = 100.1
+
+[node name="point3" type="Marker2D" parent="."]
+position = Vector2(-2796, 2684)
+gizmo_extents = 100.1
+
+[node name="BottomBoundary2" parent="." instance=ExtResource("12_gt81o")]
+position = Vector2(2795, 3048)
+
+[node name="TopBoundary2" parent="." instance=ExtResource("11_7dbxd")]
+position = Vector2(2472, 2268)
+
+[node name="RightBoundary" parent="." instance=ExtResource("17_6lrrs")]
+position = Vector2(1508, 2254)
+
+[node name="HiddenSpike7" parent="." instance=ExtResource("7_jnp3q")]
+position = Vector2(-1455, 2688)
+
+[node name="FakeDoor" parent="." instance=ExtResource("16_gt81o")]
+position = Vector2(1384, 2579)
+next_level_path = "res://scenes/levels/Level_2_1.tscn"
+teleport_points = Array[NodePath]([NodePath("../point1"), NodePath("../point2"), NodePath("../point3")])

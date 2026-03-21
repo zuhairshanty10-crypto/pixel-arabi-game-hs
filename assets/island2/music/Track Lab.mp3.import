@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cptnoh5h5cy3r"
+path="res://.godot/imported/Track Lab.mp3-d32bcf182e3cae9a566f92a7ac4c2c38.mp3str"
+
+[deps]
+
+source_file="res://assets/island2/music/Track Lab.mp3"
+dest_files=["res://.godot/imported/Track Lab.mp3-d32bcf182e3cae9a566f92a7ac4c2c38.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

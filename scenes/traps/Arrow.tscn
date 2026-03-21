@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://rrow001"]
+
+[ext_resource type="Script" path="res://scripts/traps/Arrow.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/island2/traps/Arrow_Trap/Arrow.png" id="2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arrow"]
+size = Vector2(16, 4)
+
+[node name="Arrow" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_arrow")

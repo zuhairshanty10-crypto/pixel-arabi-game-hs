@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=4]
+
+[ext_resource type="Script" path="res://scripts/ui/TouchLayoutEditor.gd" id="1_script"]
+
+[node name="TouchLayoutEditor" type="CanvasLayer"]
+layer = 101
+script = ExtResource("1_script")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200
+offset_top = 50
+offset_right = 200
+offset_bottom = 100
+text = "Drag buttons to customize layout"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 32
+
+[node name="SaveButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+offset_left = -200
+offset_top = 50
+offset_right = -50
+offset_bottom = 100
+text = "Save Layout"
+theme_override_font_sizes/font_size = 24
+
+[node name="CancelButton" type="Button" parent="."]
+offset_left = 50
+offset_top = 50
+offset_right = 200
+offset_bottom = 100
+text = "Cancel"
+theme_override_font_sizes/font_size = 24
+
+[node name="ResetButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+offset_left = -400
+offset_top = 50
+offset_right = -250
+offset_bottom = 100
+text = "Reset Default"
+theme_override_font_sizes/font_size = 24
+
+[node name="Buttons" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+

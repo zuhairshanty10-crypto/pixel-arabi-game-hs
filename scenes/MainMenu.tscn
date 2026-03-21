@@ -1,0 +1,648 @@
+[gd_scene load_steps=15 format=3 uid="uid://cxq6k3nqw8y0m"]
+
+[ext_resource type="Script" uid="uid://bv3i3p3xl7rw" path="res://scripts/MainMenu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dy1w7vonm6ofn" path="res://assets/ui/menu_background.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://bissnusnfyvh" path="res://assets/sounds/Pixel Arabi - Menu Theme.mp3" id="3"]
+[ext_resource type="FontFile" uid="uid://ducwvey6wumdf" path="res://assets/fonts/Planes_ValMore.ttf" id="4"]
+[ext_resource type="Texture2D" path="res://assets/ui/premium/Button_off.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/ui/premium/Button_on.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/ui/premium/Frame_tile_31.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/ui/premium/Slider.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/ui/premium/Circle.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/ui/premium/Band_off.png" id="10"]
+[ext_resource type="Texture2D" path="res://assets/ui/premium/Band_on.png" id="11"]
+[ext_resource type="Texture2D" path="res://assets/ui/portraits/portrait_talk.png" id="12_talk"]
+[ext_resource type="Texture2D" path="res://assets/ui/portraits/portrait_smile.png" id="13_smile"]
+[ext_resource type="Texture2D" path="res://assets/ui/portraits/portrait_aggression.png" id="14_aggro"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tran"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slider_bg"]
+texture = ExtResource("10")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slider_fill"]
+texture = ExtResource("11")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
+texture = ExtResource("7")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="Theme" id="Theme_premium"]
+default_font = ExtResource("4")
+Label/fonts/font = ExtResource("4")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.5)
+HSlider/icons/grabber = ExtResource("9")
+HSlider/icons/grabber_highlight = ExtResource("9")
+HSlider/styles/slider = SubResource("StyleBoxTexture_slider_bg")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_slider_fill")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_slider_fill")
+Button/styles/normal = SubResource("StyleBoxEmpty_tran")
+Button/styles/hover = SubResource("StyleBoxEmpty_tran")
+Button/styles/pressed = SubResource("StyleBoxEmpty_tran")
+Button/styles/focus = SubResource("StyleBoxEmpty_tran")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_premium")
+script = ExtResource("1")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="UIWrapper" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+layout_direction = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="UIWrapper"]
+layout_mode = 2
+
+[node name="MainVBox" type="VBoxContainer" parent="UIWrapper/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Title" type="Label" parent="UIWrapper/CenterContainer/MainVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.3, 0.1, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 72
+text = "PIXEL ARABI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIWrapper/CenterContainer/MainVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 14
+
+[node name="StartBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="StartButton" type="Button" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer/StartBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Start Game"
+flat = true
+
+[node name="HardcoreContainer" type="HBoxContainer" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HardcoreBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer/HardcoreContainer"]
+custom_minimum_size = Vector2(238, 80)
+layout_mode = 2
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="HardcoreButton" type="Button" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer/HardcoreContainer/HardcoreBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+text = "Hardcore"
+flat = true
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HardcoreContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="HardcoreInfoBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer/HardcoreContainer"]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="HardcoreInfoButton" type="Button" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer/HardcoreContainer/HardcoreInfoBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 0.8, 0, 1)
+text = "!"
+flat = true
+
+[node name="HowToPlayBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="HowToPlayButton" type="Button" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer/HowToPlayBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "How to Play"
+flat = true
+
+[node name="AboutUsBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="AboutUsButton" type="Button" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer/AboutUsBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "About Us"
+flat = true
+
+[node name="SettingsBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="SettingsButton" type="Button" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer/SettingsBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+flat = true
+
+[node name="QuitBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="QuitButton" type="Button" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer/QuitBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Exit"
+flat = true
+
+[node name="SettingsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -220.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HSpacer" type="Control" parent="SettingsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFXLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="FPSLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "FPS Limit"
+
+[node name="FPSOption" type="OptionButton" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+item_count = 5
+popup/item_0/text = "30 FPS"
+popup/item_0/id = 30
+popup/item_1/text = "60 FPS"
+popup/item_1/id = 60
+popup/item_2/text = "90 FPS"
+popup/item_2/id = 90
+popup/item_3/text = "120 FPS"
+popup/item_3/id = 120
+popup/item_4/text = "144 FPS"
+popup/item_4/id = 144
+
+[node name="LanguageLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Language"
+
+[node name="LanguageOption" type="OptionButton" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "العربية"
+popup/item_1/id = 1
+
+[node name="Spacer" type="Control" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CloseBG" type="NinePatchRect" parent="SettingsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CloseButton" type="Button" parent="SettingsPanel/VBoxContainer/CloseBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Back"
+flat = true
+
+[node name="HowToPlayPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HowToPlayPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HowToPlayPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 48
+text = "How to Play"
+horizontal_alignment = 1
+
+[node name="DialogueBox" type="HBoxContainer" parent="HowToPlayPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Portrait" type="TextureRect" parent="HowToPlayPanel/VBoxContainer/DialogueBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 128)
+texture = ExtResource("12_talk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Desc" type="Label" parent="HowToPlayPanel/VBoxContainer/DialogueBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Welcome to Pixel Arabi!
+A rage-inducing troll platformer!
+Your goal: reach the door at the end
+of each level... but beware!
+Don't trust anything you see.
+Floors may vanish, ceilings may fall,
+and even the doors might run away!"
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="HowToPlayPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CloseHowToPlayBG" type="NinePatchRect" parent="HowToPlayPanel/VBoxContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CloseHowToPlayButton" type="Button" parent="HowToPlayPanel/VBoxContainer/CloseHowToPlayBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Back"
+flat = true
+
+[node name="AboutUsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AboutUsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="AboutUsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 48
+text = "About Us"
+horizontal_alignment = 1
+
+[node name="DialogueBox" type="HBoxContainer" parent="AboutUsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Portrait" type="TextureRect" parent="AboutUsPanel/VBoxContainer/DialogueBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 128)
+texture = ExtResource("13_smile")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Desc" type="Label" parent="AboutUsPanel/VBoxContainer/DialogueBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "A game proudly developed by
+Pixel Arabi
+
+Managed by:
+Zuhair Shanty
+Ibrahim Murad"
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="AboutUsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CloseAboutUsBG" type="NinePatchRect" parent="AboutUsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CloseAboutUsButton" type="Button" parent="AboutUsPanel/VBoxContainer/CloseAboutUsBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Back"
+flat = true
+
+[node name="HardcoreInfoPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HardcoreInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HardcoreInfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 48
+text = "Hardcore"
+horizontal_alignment = 1
+
+[node name="DialogueBox" type="HBoxContainer" parent="HardcoreInfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Portrait" type="TextureRect" parent="HardcoreInfoPanel/VBoxContainer/DialogueBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 128)
+texture = ExtResource("14_aggro")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Desc" type="Label" parent="HardcoreInfoPanel/VBoxContainer/DialogueBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "This mode is for legends only!
+You have 5 lives per attempt.
+Lose all 5 and you restart from 1-1.
+Each player gets 5 total attempts.
+Beat the game before they run out
+and win $100!"
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="HardcoreInfoPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CloseHardcoreInfoBG" type="NinePatchRect" parent="HardcoreInfoPanel/VBoxContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CloseHardcoreInfoButton" type="Button" parent="HardcoreInfoPanel/VBoxContainer/CloseHardcoreInfoBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Back"
+flat = true
+

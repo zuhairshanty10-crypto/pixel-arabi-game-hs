@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://fan001"]
+
+[ext_resource type="Script" path="res://scripts/traps/Fan.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/traps/Fan.png" id="2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fan"]
+size = Vector2(30, 150)
+
+[node name="Fan" type="Area2D"]
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2")
+hframes = 4
+frame = 0
+
+[node name="WindZone" type="CollisionShape2D" parent="."]
+position = Vector2(0, -75)
+shape = SubResource("RectangleShape2D_fan")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://srcqt0v1am0m"]
+
+[ext_resource type="Script" uid="uid://djk0sp5qs6rq4" path="res://scripts/traps/AnimatedTrap.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d2jr8nv4o4gfy" path="res://assets/island2/traps/Fire_Trap/Fire Trap - Level 1.png" id="2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trap"]
+size = Vector2(17, 33)
+
+[node name="FireTrap" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1")
+
+[node name="AnimatedSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+hframes = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 13.5)
+shape = SubResource("RectangleShape2D_trap")

@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=4 uid="uid://8oj16bkyndo2"]
+
+[ext_resource type="PackedScene" uid="uid://4f6vapie1dfi" path="res://scenes/player/Player.tscn" id="1_player"]
+[ext_resource type="TileSet" uid="uid://cvqe43tmq7rt3" path="res://assets/island4/tileset/island4_tileset.tres" id="2_tileset"]
+[ext_resource type="PackedScene" path="res://scenes/levels/Island4_Background.tscn" id="3_bg"]
+[ext_resource type="Script" uid="uid://c55naifitb5ub" path="res://scripts/levels/LevelManager.gd" id="4_lm"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Skeleton.tscn" id="5_skel"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Zombie.tscn" id="6_zom"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Hellhound.tscn" id="7_hound"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/DarkGoblin.tscn" id="8_gob"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Beholder.tscn" id="9_beh"]
+[ext_resource type="PackedScene" uid="uid://dgohk2k33xwsm" path="res://scenes/traps/FallingPlatform.tscn" id="11_fall"]
+[ext_resource type="PackedScene" uid="uid://fire001" path="res://scenes/traps/Fire.tscn" id="12_fire"]
+[ext_resource type="PackedScene" uid="uid://sawblade001" path="res://scenes/traps/SawBlade.tscn" id="13_saw"]
+[ext_resource type="PackedScene" path="res://scenes/traps/HiddenSpike.tscn" id="14_hspike"]
+[ext_resource type="PackedScene" uid="uid://678wikaed5gg" path="res://scenes/interactables/ExitDoor.tscn" id="15_door"]
+
+[node name="Level_4_3" type="Node2D"]
+script = ExtResource("4_lm")
+
+[node name="Island4_Background" parent="." instance=ExtResource("3_bg")]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(100, 880)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAB0AAAAAAAAAAAABAB0AAAAAAAAAAAACAB0AAAAAAAAAAAADAB0AAAAAAAAAAAAEAB0AAAAAAAAAAAAFAB0AAAAAAAAAAAAGAB0AAAAAAAAAAAAHAB0AAAAAAAAAAAAIAB0AAAAAAAAAAAAJAB0AAAAAAAAAAAAKAB0AAAAAAAAAAAALAB0AAAAAAAAAAAAMAB0AAAAAAAAAAAANAB0AAAAAAAAAAAAOAB0AAAAAAAAAAAAPAB0AAAAAAAAAAAAQAB0AAAAAAAAAAAARAB0AAAAAAAAAAAASAB0AAAAAAAAAAAATAB0AAAAAAAAAAAAUAB0AAAAAAAAAAAAVAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAXAB0AAAAAAAAAAAAYAB0AAAAAAAAAAAAZAB0AAAAAAAAAAAAaAB0AAAAAAAAAAAAeAB0AAAAAAAAAAAAfAB0AAAAAAAAAAAAgAB0AAAAAAAAAAAAhAB0AAAAAAAAAAAAiAB0AAAAAAAAAAAAjAB0AAAAAAAAAAAAkAB0AAAAAAAAAAAAlAB0AAAAAAAAAAAAmAB0AAAAAAAAAAAAnAB0AAAAAAAAAAAAoAB0AAAAAAAAAAAApAB0AAAAAAAAAAAAqAB0AAAAAAAAAAAArAB0AAAAAAAAAAAAsAB0AAAAAAAAAAAAtAB0AAAAAAAAAAAAuAB0AAAAAAAAAAAAvAB0AAAAAAAAAAAAwAB0AAAAAAAAAAAAyABsAAAAAAAAAAAAzABsAAAAAAAAAAAA0ABsAAAAAAAAAAAA1ABsAAAAAAAAAAAA3ABkAAAAAAAAAAAA4ABkAAAAAAAAAAAA5ABkAAAAAAAAAAAA6ABkAAAAAAAAAAAA8ABcAAAAAAAAAAAA9ABcAAAAAAAAAAAA+ABcAAAAAAAAAAAA/ABcAAAAAAAAAAABAABcAAAAAAAAAAABBABcAAAAAAAAAAABCABcAAAAAAAAAAABDABcAAAAAAAMAAABEAB0AAAAAAAAAAABFAB0AAAAAAAAAAABGAB0AAAAAAAAAAABHAB0AAAAAAAAAAABJABsAAAAAAAAAAABKABsAAAAAAAAAAABLABsAAAAAAAAAAABNABkAAAAAAAAAAABOABkAAAAAAAAAAABPABkAAAAAAAAAAABRABsAAAAAAAAAAABSABsAAAAAAAAAAABTABsAAAAAAAAAAABVAB0AAAAAAAAAAABWAB0AAAAAAAAAAABXAB0AAAAAAAAAAABYAB0AAAAAAAAAAABZAB0AAAAAAAAAAABaAB0AAAAAAAAAAABbAB0AAAAAAAAAAABcAB0AAAAAAAAAAABdAB0AAAAAAAAAAABeAB0AAAAAAAAAAABfAB0AAAAAAAAAAABgAB0AAAAAAAAAAABhAB0AAAAAAAAAAABiAB0AAAAAAAAAAABjAB0AAAAAAAAAAABkAB0AAAAAAAAAAABlAB0AAAAAAAAAAABmAB0AAAAAAAAAAABnAB0AAAAAAAAAAABoAB0AAAAAAAAAAABVABkAAAAAAAAAAABoABkAAAAAAAAAAABVABoAAAAAAAAAAABoABoAAAAAAAAAAABVABsAAAAAAAAAAABoABsAAAAAAAAAAABVABwAAAAAAAAAAABoABwAAAAAAAAAAAA8ABYAAAAAAAMAAABDABYAAAAAAAMAAAAyABoAAAAAAAMAAAA1ABoAAAAAAAMAAAAwABwAAAAAAAMAAABNABgAAAAAAAMAAABPABgAAAAAAAMAAABRABoAAAAAAAMAAABTABoAAAAAAAMAAAAeABwAAAAAAAMAAAA=")
+tile_set = ExtResource("2_tileset")
+
+[node name="Skel1" parent="." instance=ExtResource("5_skel")]
+position = Vector2(400, 900)
+facing_direction = -1
+
+[node name="Skel2" parent="." instance=ExtResource("5_skel")]
+position = Vector2(600, 900)
+
+[node name="FallPlat1" parent="." instance=ExtResource("11_fall")]
+position = Vector2(860, 870)
+
+[node name="FallPlat2" parent="." instance=ExtResource("11_fall")]
+position = Vector2(940, 840)
+
+[node name="Fire1" parent="." instance=ExtResource("12_fire")]
+position = Vector2(1072, 945)
+
+[node name="Fire2" parent="." instance=ExtResource("12_fire")]
+position = Vector2(1201, 945)
+
+[node name="Zombie1" parent="." instance=ExtResource("6_zom")]
+position = Vector2(1300, 900)
+chase_speed = 100.0
+facing_direction = -1
+
+[node name="Zombie2" parent="." instance=ExtResource("6_zom")]
+position = Vector2(1450, 900)
+chase_speed = 100.0
+facing_direction = -1
+
+[node name="Hound1" parent="." instance=ExtResource("7_hound")]
+position = Vector2(1656, 825)
+chase_speed = 180.0
+
+[node name="Hound2" parent="." instance=ExtResource("7_hound")]
+position = Vector2(1997, 702)
+chase_speed = 180.0
+facing_direction = -1
+
+[node name="Saw1" parent="." instance=ExtResource("13_saw")]
+position = Vector2(2253, 858)
+
+[node name="Saw2" parent="." instance=ExtResource("13_saw")]
+position = Vector2(2390, 801)
+
+[node name="HiddenSpike1" parent="." instance=ExtResource("14_hspike")]
+position = Vector2(2200, 900)
+
+[node name="DarkGob1" parent="." instance=ExtResource("8_gob")]
+position = Vector2(2509, 797)
+max_health = 5
+facing_direction = -1
+
+[node name="DarkGob2" parent="." instance=ExtResource("8_gob")]
+position = Vector2(2639, 863)
+max_health = 5
+
+[node name="Beholder1" parent="." instance=ExtResource("9_beh")]
+position = Vector2(2800, 850)
+max_health = 4
+detection_range = 100.0
+facing_direction = -1
+
+[node name="Beholder2" parent="." instance=ExtResource("9_beh")]
+position = Vector2(3249, 842)
+max_health = 4
+detection_range = 0.0
+patrol_distance = 0.0
+facing_direction = -1
+
+[node name="ExitDoor" parent="." instance=ExtResource("15_door")]
+position = Vector2(3036, 881)
+next_level_path = "res://scenes/levels/Level_4_4.tscn"

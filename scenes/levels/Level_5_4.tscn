@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c61hxuswx4msp"]
+
+[ext_resource type="Script" uid="uid://gcjt6bduuyi8" path="res://scripts/levels/LevelRedirect.gd" id="1_script"]
+
+[node name="Level_5_4" type="Node2D"]
+script = ExtResource("1_script")
+target_level_path = "res://scenes/levels/Level_4_5.tscn"
+next_island5_level = "res://scenes/levels/Level_5_5.tscn"

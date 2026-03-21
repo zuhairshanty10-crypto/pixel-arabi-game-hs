@@ -1,0 +1,188 @@
+[gd_scene load_steps=19 format=4 uid="uid://76otdjjwv5dm"]
+
+[ext_resource type="PackedScene" uid="uid://4f6vapie1dfi" path="res://scenes/player/Player.tscn" id="1_player"]
+[ext_resource type="TileSet" uid="uid://cvqe43tmq7rt3" path="res://assets/island4/tileset/island4_tileset.tres" id="2_tileset"]
+[ext_resource type="PackedScene" path="res://scenes/levels/Island4_Background.tscn" id="3_bg"]
+[ext_resource type="Script" uid="uid://c55naifitb5ub" path="res://scripts/levels/LevelManager.gd" id="4_lm"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Skeleton.tscn" id="5_skel"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Zombie.tscn" id="6_zom"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Hellhound.tscn" id="7_hound"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/DarkGoblin.tscn" id="8_gob"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Beholder.tscn" id="9_beh"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Husky.tscn" id="10_husky"]
+[ext_resource type="PackedScene" uid="uid://spike001" path="res://scenes/traps/Spike.tscn" id="11_spike"]
+[ext_resource type="PackedScene" uid="uid://dgohk2k33xwsm" path="res://scenes/traps/FallingPlatform.tscn" id="12_fall"]
+[ext_resource type="PackedScene" uid="uid://fire001" path="res://scenes/traps/Fire.tscn" id="13_fire"]
+[ext_resource type="PackedScene" uid="uid://sawblade001" path="res://scenes/traps/SawBlade.tscn" id="14_saw"]
+[ext_resource type="PackedScene" path="res://scenes/traps/HiddenSpike.tscn" id="15_hspike"]
+[ext_resource type="PackedScene" uid="uid://c83k48gah3k2" path="res://scenes/traps/FakeDoor.tscn" id="16_fdoor"]
+[ext_resource type="PackedScene" uid="uid://678wikaed5gg" path="res://scenes/interactables/ExitDoor.tscn" id="17_door"]
+[ext_resource type="PackedScene" path="res://scenes/traps/PunchTrap.tscn" id="18_xq2ea"]
+
+[node name="Level_4_4" type="Node2D"]
+script = ExtResource("4_lm")
+
+[node name="Island4_Background" parent="." instance=ExtResource("3_bg")]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(100, 880)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("2_tileset")
+
+[node name="Hound_Start1" parent="." instance=ExtResource("7_hound")]
+position = Vector2(350, 900)
+chase_speed = 200.0
+facing_direction = -1
+
+[node name="Hound_Start2" parent="." instance=ExtResource("7_hound")]
+position = Vector2(550, 900)
+chase_speed = 200.0
+facing_direction = -1
+
+[node name="Skel_Guard" parent="." instance=ExtResource("5_skel")]
+position = Vector2(700, 900)
+detection_range = 0.0
+patrol_distance = 0.0
+facing_direction = -1
+
+[node name="Spike_A1" parent="." instance=ExtResource("11_spike")]
+position = Vector2(830, 940)
+
+[node name="Spike_A2" parent="." instance=ExtResource("11_spike")]
+position = Vector2(870, 940)
+
+[node name="Spike_A3" parent="." instance=ExtResource("11_spike")]
+position = Vector2(910, 940)
+
+[node name="Spike_A4" parent="." instance=ExtResource("11_spike")]
+position = Vector2(950, 940)
+
+[node name="Spike_A5" parent="." instance=ExtResource("11_spike")]
+position = Vector2(990, 940)
+
+[node name="FallPlat_A1" parent="." instance=ExtResource("12_fall")]
+position = Vector2(850, 870)
+
+[node name="FallPlat_A2" parent="." instance=ExtResource("12_fall")]
+position = Vector2(930, 840)
+
+[node name="FallPlat_A3" parent="." instance=ExtResource("12_fall")]
+position = Vector2(1010, 870)
+
+[node name="Fire_B1" parent="." instance=ExtResource("13_fire")]
+position = Vector2(1169, 947)
+
+[node name="Saw_B1" parent="." instance=ExtResource("14_saw")]
+position = Vector2(1300, 850)
+
+[node name="Fire_B2" parent="." instance=ExtResource("13_fire")]
+position = Vector2(1393, 947)
+
+[node name="Saw_B2" parent="." instance=ExtResource("14_saw")]
+position = Vector2(1500, 850)
+
+[node name="Zombie_B1" parent="." instance=ExtResource("6_zom")]
+position = Vector2(1250, 900)
+max_health = 4
+facing_direction = -1
+
+[node name="Zombie_B2" parent="." instance=ExtResource("6_zom")]
+position = Vector2(1350, 900)
+max_health = 4
+
+[node name="Zombie_B3" parent="." instance=ExtResource("6_zom")]
+position = Vector2(1500, 900)
+max_health = 4
+facing_direction = -1
+
+[node name="Husky_C1" parent="." instance=ExtResource("10_husky")]
+position = Vector2(1884, 839)
+chase_speed = 190.0
+facing_direction = -1
+
+[node name="Husky_C2" parent="." instance=ExtResource("10_husky")]
+position = Vector2(2066, 701)
+chase_speed = 190.0
+
+[node name="HSpike_C1" parent="." instance=ExtResource("15_hspike")]
+position = Vector2(1845, 825)
+
+[node name="HSpike_C2" parent="." instance=ExtResource("15_hspike")]
+position = Vector2(2001, 726)
+
+[node name="Skel_C1" parent="." instance=ExtResource("5_skel")]
+position = Vector2(2193, 629)
+facing_direction = -1
+
+[node name="Skel_C2" parent="." instance=ExtResource("5_skel")]
+position = Vector2(2292, 642)
+
+[node name="FakeDoor1" parent="." instance=ExtResource("16_fdoor")]
+position = Vector2(2457, 908)
+
+[node name="HSpike_D1" parent="." instance=ExtResource("15_hspike")]
+position = Vector2(2387, 917)
+
+[node name="HSpike_D2" parent="." instance=ExtResource("15_hspike")]
+position = Vector2(2513, 924)
+
+[node name="Beholder_D1" parent="." instance=ExtResource("9_beh")]
+position = Vector2(2550, 900)
+max_health = 5
+facing_direction = -1
+
+[node name="DarkGob_E1" parent="." instance=ExtResource("8_gob")]
+position = Vector2(2722, 900)
+max_health = 6
+chase_speed = 160.0
+facing_direction = -1
+
+[node name="DarkGob_E2" parent="." instance=ExtResource("8_gob")]
+position = Vector2(2950, 900)
+max_health = 6
+chase_speed = 160.0
+
+[node name="DarkGob_E3" parent="." instance=ExtResource("8_gob")]
+position = Vector2(3100, 900)
+max_health = 6
+chase_speed = 160.0
+facing_direction = -1
+
+[node name="Beholder_E1" parent="." instance=ExtResource("9_beh")]
+position = Vector2(2900, 800)
+max_health = 5
+detection_range = 0.0
+patrol_distance = 0.0
+facing_direction = -1
+
+[node name="Beholder_E2" parent="." instance=ExtResource("9_beh")]
+position = Vector2(3050, 800)
+max_health = 5
+detection_range = 0.0
+patrol_distance = 0.0
+
+[node name="Hound_E1" parent="." instance=ExtResource("7_hound")]
+position = Vector2(3200, 900)
+max_health = 4
+chase_speed = 220.0
+facing_direction = -1
+
+[node name="Hound_E2" parent="." instance=ExtResource("7_hound")]
+position = Vector2(3300, 900)
+max_health = 4
+chase_speed = 220.0
+
+[node name="ExitDoor" parent="." instance=ExtResource("17_door")]
+position = Vector2(3655, 881)
+next_level_path = "res://scenes/levels/Level_4_5.tscn"
+
+[node name="PunchTrap" parent="." instance=ExtResource("18_xq2ea")]
+position = Vector2(1937, 863)
+
+[node name="PunchTrap2" parent="." instance=ExtResource("18_xq2ea")]
+position = Vector2(2095, 769)
+
+[node name="PunchTrap3" parent="." instance=ExtResource("18_xq2ea")]
+position = Vector2(2767, 897)
