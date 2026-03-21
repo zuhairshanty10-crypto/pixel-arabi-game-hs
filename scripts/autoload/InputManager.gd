@@ -20,16 +20,16 @@ var customizable_actions = {
 }
 
 var default_touch_layout = {
-	"ui_cancel": {"pos": Vector2(960, 50), "scale": Vector2(1.2, 1.2)},
-	"move_left": {"pos": Vector2(100, 800), "scale": Vector2(1.5, 1.5)},
-	"move_right": {"pos": Vector2(350, 800), "scale": Vector2(1.5, 1.5)},
-	"move_up": {"pos": Vector2(225, 650), "scale": Vector2(1.5, 1.5)},
-	"move_down": {"pos": Vector2(225, 950), "scale": Vector2(1.5, 1.5)},
-	"jump": {"pos": Vector2(1700, 800), "scale": Vector2(1.5, 1.5)},
-	"dash": {"pos": Vector2(1450, 800), "scale": Vector2(1.5, 1.5)},
-	"roll": {"pos": Vector2(1450, 600), "scale": Vector2(1.5, 1.5)},
-	"attack": {"pos": Vector2(1700, 600), "scale": Vector2(1.5, 1.5)},
-	"shield": {"pos": Vector2(1700, 400), "scale": Vector2(1.5, 1.5)}
+	"ui_cancel": {"pos": Vector2(960, 50), "scale": Vector2(1.4, 1.4)},
+	"move_left": {"pos": Vector2(180, 800), "scale": Vector2(1.7, 1.7)},
+	"move_right": {"pos": Vector2(430, 800), "scale": Vector2(1.7, 1.7)},
+	"move_up": {"pos": Vector2(305, 650), "scale": Vector2(1.7, 1.7)},
+	"move_down": {"pos": Vector2(305, 950), "scale": Vector2(1.7, 1.7)},
+	"jump": {"pos": Vector2(1600, 800), "scale": Vector2(1.7, 1.7)},
+	"dash": {"pos": Vector2(1350, 800), "scale": Vector2(1.7, 1.7)},
+	"roll": {"pos": Vector2(1350, 600), "scale": Vector2(1.7, 1.7)},
+	"attack": {"pos": Vector2(1600, 600), "scale": Vector2(1.7, 1.7)},
+	"shield": {"pos": Vector2(1600, 400), "scale": Vector2(1.7, 1.7)}
 }
 
 var current_touch_layout = {}
