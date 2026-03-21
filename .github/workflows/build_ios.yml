@@ -29,8 +29,8 @@ jobs:
         
       - name: Export Godot iOS Project
         run: |
-          # Headless export to Xcode project
-          godot --headless --export-release "iOS" ios_build/PixelArabi.xcodeproj
+          # Headless export to Xcode project. Godot will attempt to archive it and fail due to missing Apple Developer certs. We suppress this error with || true.
+          godot --headless --export-release "iOS" ios_build/PixelArabi.xcodeproj || true
           
       - name: Build Xcode Project (Unsigned for AltStore)
         run: |
