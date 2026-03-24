@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nggps68lc76d"
-valid=false
+path="res://.godot/imported/island2.png-58e0ddea8d45e1df59aadba2e9db9212.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/ui/islands/island2.png"
+dest_files=["res://.godot/imported/island2.png-58e0ddea8d45e1df59aadba2e9db9212.ctex"]
 
 [params]
 

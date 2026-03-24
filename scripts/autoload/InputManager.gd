@@ -15,8 +15,8 @@ var customizable_actions = {
 	"jump": {"name": "Jump", "default": KEY_SPACE, "default_joypad": JOY_BUTTON_A},
 	"dash": {"name": "Dash", "default": KEY_SHIFT, "default_joypad": JOY_BUTTON_RIGHT_SHOULDER},
 	"roll": {"name": "Roll", "default": KEY_R, "default_joypad": JOY_BUTTON_B},
-	"attack": {"name": "Attack", "default": KEY_J, "default_joypad": JOY_BUTTON_X}, 
-	"shield": {"name": "Shield", "default": KEY_K, "default_joypad": JOY_BUTTON_LEFT_SHOULDER}
+	"attack": {"name": "Attack", "default": -MOUSE_BUTTON_LEFT, "default_joypad": JOY_BUTTON_X}, 
+	"shield": {"name": "Shield", "default": -MOUSE_BUTTON_RIGHT, "default_joypad": JOY_BUTTON_LEFT_SHOULDER}
 }
 
 var default_touch_layout = {
@@ -147,13 +147,21 @@ func apply_keybindings() -> void:
 					continue
 			InputMap.action_add_event(action, base_ev)
 			
-		# 3. Add custom keyboard key
-		var key_event = InputEventKey.new()
-		key_event.physical_keycode = custom_keycode
-		InputMap.action_add_event(action, key_event)
+		# 3. Add custom keyboard key or mouse button
+		if custom_keycode < 0:
+			var mouse_event = InputEventMouseButton.new()
+			mouse_event.device = -1
+			mouse_event.button_index = -custom_keycode
+			InputMap.action_add_event(action, mouse_event)
+		else:
+			var key_event = InputEventKey.new()
+			key_event.device = -1
+			key_event.physical_keycode = custom_keycode
+			InputMap.action_add_event(action, key_event)
 		
 		# 4. Add custom joypad button
 		var joy_event = InputEventJoypadButton.new()
+		joy_event.device = -1
 		joy_event.button_index = custom_joy_btn
 		InputMap.action_add_event(action, joy_event)
 		

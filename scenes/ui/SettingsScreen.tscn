@@ -1,15 +1,50 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/SettingsScreen.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/ui/menu_background.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/ui/hd_menu_bg.png" id="2"]
 [ext_resource type="Texture2D" path="res://assets/ui/premium/Frame_tile_31.png" id="3"]
+[ext_resource type="FontFile" uid="uid://ducwvey6wumdf" path="res://assets/fonts/Planes_ValMore.ttf" id="4"]
+[ext_resource type="Script" path="res://scripts/ui/AnimatedButton.gd" id="5_anim"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
-texture = ExtResource("3")
-texture_margin_left = 12.0
-texture_margin_top = 12.0
-texture_margin_right = 12.0
-texture_margin_bottom = 12.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.06, 0.04, 0.12, 0.82)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.4, 0.85, 0.5)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0.3, 0.1, 0.6, 0.3)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.08, 0.06, 0.15, 0.75)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.5, 0.9, 0.5)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.12, 0.08, 0.25, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.85, 1.0, 0.9)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.3, 0.7, 1.0, 0.3)
+shadow_size = 8
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
@@ -31,6 +66,24 @@ texture = ExtResource("2")
 expand_mode = 1
 stretch_mode = 6
 
+[node name="DustParticles" type="CPUParticles2D" parent="."]
+position = Vector2(960, 540)
+emitting = true
+amount = 30
+lifetime = 8.0
+speed_scale = 0.3
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(960, 540)
+direction = Vector2(1, -0.5)
+spread = 60.0
+gravity = Vector2(0, -2)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+scale_amount_min = 1.5
+scale_amount_max = 4.0
+color = Color(1, 0.85, 0.4, 0.2)
+
 [node name="CenterWrapper" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -40,9 +93,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CenterPanel" type="Panel" parent="CenterWrapper"]
-custom_minimum_size = Vector2(760, 720)
+custom_minimum_size = Vector2(700, 680)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
 [node name="VBox" type="VBoxContainer" parent="CenterWrapper/CenterPanel"]
 layout_mode = 1
@@ -55,12 +108,15 @@ offset_right = -40.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 14
 
 [node name="Title" type="Label" parent="CenterWrapper/CenterPanel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
 text = "Settings"
 horizontal_alignment = 1
 
@@ -68,11 +124,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-
-
 [node name="MusicLabel" type="Label" parent="CenterWrapper/CenterPanel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.85, 0.8, 1.0, 1)
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="CenterWrapper/CenterPanel/VBox"]
@@ -84,6 +139,7 @@ value = 1.0
 [node name="SFXLabel" type="Label" parent="CenterWrapper/CenterPanel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.85, 0.8, 1.0, 1)
 text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="CenterWrapper/CenterPanel/VBox"]
@@ -95,11 +151,14 @@ value = 1.0
 [node name="FPSLabel" type="Label" parent="CenterWrapper/CenterPanel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.85, 0.8, 1.0, 1)
 text = "FPS Limit"
 
 [node name="FPSOption" type="OptionButton" parent="CenterWrapper/CenterPanel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 item_count = 5
 popup/item_0/text = "30 FPS"
 popup/item_0/id = 30
@@ -115,20 +174,26 @@ popup/item_4/id = 144
 [node name="ControlsButton" type="Button" parent="CenterWrapper/CenterPanel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "Controls"
+script = ExtResource("5_anim")
 
 [node name="ControlsSpacer" type="Control" parent="CenterWrapper/CenterPanel/VBox"]
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 
 [node name="LanguageLabel" type="Label" parent="CenterWrapper/CenterPanel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.85, 0.8, 1.0, 1)
 text = "Language"
 
 [node name="LanguageOption" type="OptionButton" parent="CenterWrapper/CenterPanel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 item_count = 2
 popup/item_0/text = "English"
 popup/item_0/id = 0
@@ -139,23 +204,12 @@ popup/item_1/id = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BackBG" type="NinePatchRect" parent="CenterWrapper/CenterPanel/VBox"]
-custom_minimum_size = Vector2(260, 60)
+[node name="BackButton" type="Button" parent="CenterWrapper/CenterPanel/VBox"]
+custom_minimum_size = Vector2(260, 55)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("3")
-patch_margin_left = 12
-patch_margin_top = 12
-patch_margin_right = 12
-patch_margin_bottom = 12
-
-[node name="BackButton" type="Button" parent="CenterWrapper/CenterPanel/VBox/BackBG"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "Back"
-flat = true
+script = ExtResource("5_anim")

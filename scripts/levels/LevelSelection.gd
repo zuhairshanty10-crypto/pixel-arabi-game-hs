@@ -2,7 +2,7 @@ extends Control
 
 @onready var title = $Title
 @onready var buttons_container = $GridContainer
-@onready var back_button = $BackButtonBG/BackButton
+@onready var back_button = $BackButton
 @onready var template_bg = $GridContainer/LevelButtonTemplate
 @onready var background = $Background
 
@@ -12,12 +12,24 @@ func _ready():
 	var island_id = GameManager.current_island
 	
 	if Localization:
+		var is_ar = Localization.current_language == "ar"
 		title.text = Localization.get_text("island_" + str(island_id))
-		back_button.text = Localization.get_text("back")
-		if Localization.current_language == "ar":
-			var arabic_font = load("res://assets/fonts/ArabicTypesetting.ttf")
-			title.add_theme_font_override("font", arabic_font)
-			back_button.add_theme_font_override("font", arabic_font)
+		back_button.text = Localization.get_text("back") if Localization.get_text("back") != "back" else ("رجوع للمركز" if is_ar else "Back to Islands")
+		
+		var labels = [title, back_button]
+		for l in labels:
+			if is_ar:
+				var arabic_font = load("res://assets/fonts/ArabicTypesetting.ttf")
+				l.add_theme_font_override("font", arabic_font)
+				if not l.has_meta("orig_size"):
+					var c_size = 36
+					if l.has_theme_font_size_override("font_size"): c_size = l.get_theme_font_size("font_size")
+					l.set_meta("orig_size", c_size)
+				l.add_theme_font_size_override("font_size", l.get_meta("orig_size") + 16)
+			else:
+				l.remove_theme_font_override("font")
+				if l.has_meta("orig_size"):
+					l.add_theme_font_size_override("font_size", l.get_meta("orig_size"))
 	else:
 		title.text = "Island " + str(island_id)
 		
@@ -41,7 +53,7 @@ func _ready():
 		bg.show()
 		buttons_container.add_child(bg)
 		
-		var btn = bg.get_node("Button") as Button
+		var btn = bg as Button
 		var label = bg.get_node("Label") as Label
 		var lock_icon = bg.get_node("LockIcon") as TextureRect
 		
@@ -56,6 +68,17 @@ func _ready():
 			btn.disabled = true
 			lock_icon.show()
 			label.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5, 1))
+
+	# Establish default focus for Gamepad UI navigation
+	var found_focus = false
+	for p in buttons_container.get_children():
+		var b = p.get_node_or_null("Button")
+		if b is Button and not b.disabled and b.visible:
+			b.grab_focus()
+			found_focus = true
+			break
+	if not found_focus:
+		back_button.grab_focus()
 
 func _on_level_selected(level: int):
 	var island = GameManager.current_island

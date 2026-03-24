@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxq6k3nqw8y0m"]
+[gd_scene load_steps=24 format=3 uid="uid://cxq6k3nqw8y0m"]
 
 [ext_resource type="Script" uid="uid://bv3i3p3xl7rw" path="res://scripts/MainMenu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://dy1w7vonm6ofn" path="res://assets/ui/menu_background.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/ui/hd_menu_bg.png" id="2"]
 [ext_resource type="AudioStream" uid="uid://bissnusnfyvh" path="res://assets/sounds/Pixel Arabi - Menu Theme.mp3" id="3"]
 [ext_resource type="FontFile" uid="uid://ducwvey6wumdf" path="res://assets/fonts/Planes_ValMore.ttf" id="4"]
 [ext_resource type="Texture2D" path="res://assets/ui/premium/Button_off.png" id="5"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" path="res://assets/ui/portraits/portrait_talk.png" id="12_talk"]
 [ext_resource type="Texture2D" path="res://assets/ui/portraits/portrait_smile.png" id="13_smile"]
 [ext_resource type="Texture2D" path="res://assets/ui/portraits/portrait_aggression.png" id="14_aggro"]
+[ext_resource type="Script" path="res://scripts/ui/AnimatedButton.gd" id="15_anim"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tran"]
 
@@ -38,6 +39,72 @@ texture_margin_top = 12.0
 texture_margin_right = 12.0
 texture_margin_bottom = 12.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.08, 0.06, 0.15, 0.75)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.5, 0.9, 0.5)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.4, 0.2, 0.8, 0.2)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.12, 0.08, 0.25, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.85, 1.0, 0.9)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.3, 0.7, 1.0, 0.35)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.05, 0.03, 0.1, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1.0, 0.8, 0.3, 0.8)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1.0, 0.9, 0.4, 0.6)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup"]
+bg_color = Color(0.06, 0.04, 0.12, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.4, 0.85, 0.6)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0.3, 0.1, 0.6, 0.3)
+shadow_size = 12
+
 [sub_resource type="Theme" id="Theme_premium"]
 default_font = ExtResource("4")
 Label/fonts/font = ExtResource("4")
@@ -47,10 +114,10 @@ HSlider/icons/grabber_highlight = ExtResource("9")
 HSlider/styles/slider = SubResource("StyleBoxTexture_slider_bg")
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_slider_fill")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_slider_fill")
-Button/styles/normal = SubResource("StyleBoxEmpty_tran")
-Button/styles/hover = SubResource("StyleBoxEmpty_tran")
-Button/styles/pressed = SubResource("StyleBoxEmpty_tran")
-Button/styles/focus = SubResource("StyleBoxEmpty_tran")
+Button/styles/normal = SubResource("StyleBoxFlat_btn_normal")
+Button/styles/hover = SubResource("StyleBoxFlat_btn_hover")
+Button/styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+Button/styles/focus = SubResource("StyleBoxFlat_btn_focus")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -129,7 +196,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "Start Game"
-flat = true
+script = ExtResource("15_anim")
 
 [node name="HardcoreContainer" type="HBoxContainer" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
 layout_mode = 2
@@ -154,7 +221,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
 text = "Hardcore"
-flat = true
+script = ExtResource("15_anim")
 
 [node name="Spacer" type="Control" parent="VBoxContainer/HardcoreContainer"]
 custom_minimum_size = Vector2(10, 0)
@@ -179,7 +246,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 theme_override_colors/font_color = Color(1, 0.8, 0, 1)
 text = "!"
-flat = true
+script = ExtResource("15_anim")
 
 [node name="HowToPlayBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
@@ -199,7 +266,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "How to Play"
-flat = true
+script = ExtResource("15_anim")
 
 [node name="AboutUsBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
@@ -219,7 +286,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "About Us"
-flat = true
+script = ExtResource("15_anim")
 
 [node name="SettingsBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
@@ -239,7 +306,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "Settings"
-flat = true
+script = ExtResource("15_anim")
 
 [node name="QuitBG" type="NinePatchRect" parent="UIWrapper/CenterContainer/MainVBox/VBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
@@ -259,7 +326,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "Exit"
-flat = true
+script = ExtResource("15_anim")
 
 [node name="SettingsPanel" type="Panel" parent="."]
 visible = false
@@ -275,7 +342,7 @@ offset_right = 260.0
 offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
 layout_mode = 1
@@ -407,7 +474,7 @@ offset_right = 350.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HowToPlayPanel"]
 layout_mode = 1
@@ -492,7 +559,7 @@ offset_right = 300.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AboutUsPanel"]
 layout_mode = 1
@@ -576,7 +643,7 @@ offset_right = 350.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HardcoreInfoPanel"]
 layout_mode = 1
@@ -645,4 +712,23 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 28
 text = "Back"
 flat = true
+
+[node name="DustParticles" type="CPUParticles2D" parent="."]
+position = Vector2(960, 540)
+emitting = true
+amount = 40
+lifetime = 8.0
+speed_scale = 0.3
+explosiveness = 0.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(960, 540)
+direction = Vector2(1, -0.5)
+spread = 60.0
+gravity = Vector2(0, -2)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+scale_amount_min = 1.5
+scale_amount_max = 4.0
+color = Color(1, 0.85, 0.4, 0.25)
 

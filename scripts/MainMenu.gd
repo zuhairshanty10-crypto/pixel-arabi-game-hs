@@ -69,8 +69,15 @@ func _apply_translations():
 		if lbl:
 			if is_arabic and arabic_font:
 				lbl.add_theme_font_override("font", arabic_font)
+				if not lbl.has_meta("orig_size"):
+					var c_size = 24
+					if lbl.has_theme_font_size_override("font_size"): c_size = lbl.get_theme_font_size("font_size")
+					lbl.set_meta("orig_size", c_size)
+				lbl.add_theme_font_size_override("font_size", lbl.get_meta("orig_size") + 14)
 			else:
 				lbl.remove_theme_font_override("font")
+				if lbl.has_meta("orig_size"):
+					lbl.add_theme_font_size_override("font_size", lbl.get_meta("orig_size"))
 	
 	start_button.text = Localization.get_text("start_game")
 	hardcore_button.text = Localization.get_text("hardcore")

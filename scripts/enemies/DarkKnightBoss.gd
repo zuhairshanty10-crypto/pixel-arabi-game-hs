@@ -311,7 +311,7 @@ func _die() -> void:
 			var p = get_tree().get_first_node_in_group("player")
 			var door_y = p.global_position.y if p else global_position.y
 			door.global_position = Vector2(960, door_y)
-			door.next_level_path = "res://scenes/menus/MainMenu.tscn"
+			door.next_level_path = "res://scenes/levels/Level_5_1.tscn"
 			get_tree().current_scene.add_child(door)
 		queue_free()
 	)
